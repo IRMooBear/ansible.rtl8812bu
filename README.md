@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/IRMooBear/driver_rtl8812bu.svg?branch=master)](https://travis-ci.com/IRMooBear/driver_rtl8812bu)
+
 Install 8812BU
 =========
 
