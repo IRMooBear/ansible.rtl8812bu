@@ -1,0 +1,15 @@
+---
+# tasks file for driver_rtl8812bu
+- name: check rtl8812bu exists
+  stat:
+    path: /lib/modules/{{ ansible_kernel }}/kernel/drivers/net/88x2bu.ko
+  register: rtl8812bu_check
+- include: compile_rtl8812bu.yml
+  when: not rtl8812bu_check.stat.exists
+- include: configure_Debian.yml
+  when: ansible_os_family == 'Debian'
+- name: load module on startup
+  lineinfile:
+    path: /etc/modules
+    line: 88x2bu
+    state: "{{ 'present' if rtl8812bu_load_module_on_startup else 'absent' }}"

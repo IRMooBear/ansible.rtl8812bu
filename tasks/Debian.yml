@@ -1,0 +1,14 @@
+---
+- name: install rtl8812bu dependencies
+  apt:
+    state: present
+    name: [
+      'raspberrypi-kernel-headers',
+      'git',
+      'build-essential',
+      'bc'
+    ]
+  register: result
+  retries: 3
+  delay: 10
+  until: not result.failed

@@ -1,0 +1,11 @@
+---
+- name: install rtl8812bu dependencies
+  yum:
+    state: present
+    name: [
+      'git',
+      'kernel-devel'
+    ]
+  register: result
+  retries: 3
+  until: not result.failed
