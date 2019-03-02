@@ -1,4 +1,5 @@
 galaxy_info:
+  role_name: rtl8812bu
   author: Anh Nguyen
   description: Build RTL8812BU drivers on RPI and RedHat
   company: N/a
