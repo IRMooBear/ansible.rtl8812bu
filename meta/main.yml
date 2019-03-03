@@ -1,7 +1,7 @@
 galaxy_info:
   role_name: rtl8812bu
   author: Anh Nguyen
-  description: Build RTL8812BU drivers on RPI and RedHat
+  description: Compile Realtek's RTL8812BU driver on RPI. Install kernel module and configure network interface.
   company: N/a
 
   # If the issue tracker for your role is not on github, uncomment the

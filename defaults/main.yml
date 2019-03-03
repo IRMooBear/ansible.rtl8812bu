@@ -4,7 +4,7 @@ compile_threads: "{{ ansible_processor_cores }}"
 rtl8812bu_version: ac11dcb1c199d1f0435f583334e327c497f2dd4f
 rtl8812bu_mac: 000000000000
 rtl8812bu_wpa_supplicant: yes
-rtl8812bu_load_module_on_startup: no
+rtl8812bu_load_module_on_startup: yes
 
 rtl8812bu_config_i386: yes
 rtl8812bu_config_rpi: yes
