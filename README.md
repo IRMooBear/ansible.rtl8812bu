@@ -5,6 +5,10 @@ Install 8812BU
 
 Ansible role to automatically download and compile drivers for RealTek RTL8812BU WIFI adapters.
 
+Dependencies
+--------------
+This role build the driver from https://github.com/cilynx/rtl88x2BU_WiFi_linux_v5.3.1_27678.20180430_COEX20180427-5959.
+
 Role Variables
 --------------
     compile_threads: "{{ ansible_processor_cores }}"
@@ -26,7 +30,7 @@ Create separate WPA supplicant file from template.
     
 Autoload module on startup.    
     
-    rtl8812bu_config_i386: yes
+    rtl8812bu_config_i386: no
     rtl8812bu_config_rpi: yes
     
 Set to compile for RPI by default, turn this off if used on i386...    

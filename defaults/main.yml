@@ -6,7 +6,7 @@ rtl8812bu_mac: 000000000000
 rtl8812bu_wpa_supplicant: yes
 rtl8812bu_load_module_on_startup: yes
 
-rtl8812bu_config_i386: yes
+rtl8812bu_config_i386: no
 rtl8812bu_config_rpi: yes
 
 rtl8812bu_authentications:

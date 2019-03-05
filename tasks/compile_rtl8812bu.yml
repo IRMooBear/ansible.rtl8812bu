@@ -35,6 +35,7 @@
   become: false
   make:
     params:
+      MAKEFLAGS: -j{{ compile_threads }}
       NUM_THREADS: "{{ compile_threads }}"
   args:
     chdir: /usr/local/src/rtl8812bu
