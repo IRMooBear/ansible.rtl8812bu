@@ -55,7 +55,7 @@ Example usage:
 
     - hosts: servers
       roles:
-         - { role: irmoobear.driver_rtl8812bu, rtl8812bu_mac: 1234..., rtl8812bu_authentications: my_auth }
+         - { role: irmoobear.rtl8812bu, rtl8812bu_mac: 1234..., rtl8812bu_authentications: my_auth }
 
 License
 -------
