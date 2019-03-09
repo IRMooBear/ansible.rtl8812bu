@@ -4,9 +4,9 @@
   stat:
     path: /lib/modules/{{ ansible_kernel }}/kernel/drivers/net/88x2bu.ko
   register: rtl8812bu_check
-- include: compile_rtl8812bu.yml
+- import_tasks: compile_rtl8812bu.yml
   when: not rtl8812bu_check.stat.exists
-- include: configure_Debian.yml
+- import_tasks: configure_Debian.yml
   when: ansible_os_family == 'Debian'
 - name: load module on startup
   lineinfile:
