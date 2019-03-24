@@ -1,5 +1,6 @@
 ---
 - name: git clone rtl8812bu driver
+  become: yes
   git:
     repo: https://github.com/cilynx/rtl88x2BU_WiFi_linux_v5.3.1_27678.20180430_COEX20180427-5959.git
     dest: /usr/local/src/rtl8812bu
@@ -11,6 +12,7 @@
   retries: 3
   until: not rtl8812bu_repo.failed
 - name: change rtl8812bu owner
+  become: yes
   file:
     path: /usr/local/src/rtl8812bu
     owner: "{{ ansible_user }}"
@@ -20,19 +22,21 @@
 - include: RedHat.yml
   when: ansible_os_family == 'RedHat'
 - name: disable compile rtl8812bu for i386
+  become: no
   lineinfile:
     path: /usr/local/src/rtl8812bu/Makefile
     regexp: '^CONFIG_PLATFORM_I386_PC'
     line: 'CONFIG_PLATFORM_I386_PC = n'
   when: not rtl8812bu_config_i386
 - name: enable compile rtl8812bu for RPI
+  become: no
   lineinfile:
     path: /usr/local/src/rtl8812bu/Makefile
     regexp: '^CONFIG_PLATFORM_ARM_RPI'
     line: 'CONFIG_PLATFORM_ARM_RPI = y'
   when: rtl8812bu_config_rpi
 - name: make rtl8812bu
-  become: false
+  become: no
   make:
     params:
       MAKEFLAGS: -j{{ compile_threads }}
@@ -40,13 +44,16 @@
   args:
     chdir: /usr/local/src/rtl8812bu
 - name: copy rtl8812bu kernel module
+  become: yes
   copy:
     remote_src: yes
     src: /usr/local/src/rtl8812bu/88x2bu.ko
     dest: /lib/modules/{{ ansible_kernel }}/kernel/drivers/net/88x2bu.ko
 - name: run depmod for rtl8812au
+  become: yes
   command: depmod
 - name: install rtl8812bu to kernel
+  become: yes
   modprobe:
     name: 88x2bu
     state: present

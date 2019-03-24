@@ -1,9 +1,11 @@
 ---
 - name: copy rtl8812bu interface
+  become: yes
   template:
     src: interface.ini
     dest: /etc/network/interfaces.d/enx{{ rtl8812bu_mac }}
 - name: copy rtl8812au wpa supplicant template
+  become: yes
   template:
     src: wpa_supplicant.conf.ini
     dest: /etc/wpa_supplicant/wpa_supplicant-enx{{ rtl8812bu_mac }}.conf

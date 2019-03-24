@@ -9,6 +9,7 @@
 - import_tasks: configure_Debian.yml
   when: ansible_os_family == 'Debian'
 - name: load module on startup
+  become: yes
   lineinfile:
     path: /etc/modules
     line: 88x2bu
